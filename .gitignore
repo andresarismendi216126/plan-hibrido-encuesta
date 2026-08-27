@@ -1,0 +1,12 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Supabase local CLI state
+.supabase/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
