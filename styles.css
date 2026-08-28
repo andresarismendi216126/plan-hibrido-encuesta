@@ -1,3 +1,5 @@
+@import url("https://www.sura.co/documents/d/global/fonts-sura");
+
 :root {
   --blue:#006ff5;
   --navy:#003b8f;
@@ -25,12 +27,13 @@ body {
   margin:0;
   color:var(--ink);
   background:#f8fbfd;
-  font-family:"Avenir Next","Segoe UI",sans-serif;
+  font-family:"SuraSans",sans-serif;
   line-height:1.45;
 }
 
 button,input,select,textarea {
   font:inherit;
+  font-family:inherit;
 }
 
 .topbar {
