@@ -9,26 +9,24 @@
 </head>
 <body>
   <header class="topbar">
-<div class="badge">MASCOTAS</div>
-<div class="brand">sura<span>+</span>
-</div>
+  <a class="brand" href="#inicio" aria-label="SURA Mascotas">sura<span>+</span></a>
+  <div class="topbar-context"><span class="status-dot"></span> Encuesta</div>
 </header>
   <main>
-    <section class="hero">
+      <section class="hero" id="inicio">
 <div class="hero-grid">
 <div>
-<span class="eyebrow">PROPUESTA EN EVALUACION</span>
+<span class="eyebrow">SURA · MASCOTAS</span>
 <h1>Salud <span>para</span> Mascotas</h1>
 <p>Queremos conocer que forma de atencion te da mas tranquilidad: acceso directo en nuestra red o una alternativa que combine red SURA con reembolso fuera de la red.</p>
-<div class="concept">Este ejercicio no es una oferta comercial</div>
+<div class="hero-actions"><a class="hero-link" href="#models-title">Explorar los modelos <span>↓</span></a><div class="concept">Esta es una encuesta, no una oferta comercial</div></div>
 </div>
-<div class="pet-visual" aria-label="Ilustracion de mascotas">
+<div class="pet-visual" aria-label="Perro en un espacio natural">
 <div class="visual-blob">
 </div>
-<div class="pet pet-dog">DOG</div>
-<div class="pet pet-cat">CAT</div>
+<div class="pet-photo"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=85" alt="Perro en un espacio natural"></div>
 <div class="pay-card">
-<strong>Mas libertad para elegir</strong>
+<span class="card-kicker">BIENESTAR</span><strong>Más libertad para elegir</strong>
 <span>Compara como usarias cada modelo.</span>
 </div>
 </div>
@@ -68,7 +66,7 @@
 </article>
 <article class="model-card hybrid" id="hybridModel">
 <div class="model-head">
-<small>CONCEPTO PARA TESTEO</small>
+<small>PROPUESTA EN ENCUESTA</small>
 <h3>Red SURA + reembolso</h3>
 <p>Mantienes el acceso directo en red y puedes atenderte fuera de ella con reembolso parcial.</p>
 </div>
@@ -191,8 +189,8 @@
 </div>
 <form id="testForm" class="form-body">
 <div class="field">
-<label for="codigo">Codigo de participante</label>
-<input id="codigo" name="codigo_participante" required placeholder="Ej. MH-001">
+<label for="nombreCompleto">Nombre completo</label>
+<input id="nombreCompleto" name="nombre_completo" required placeholder="Nombre y apellidos">
 </div>
 <div class="field">
 <label for="ciudad">Ciudad</label>
@@ -294,7 +292,7 @@
   </main>
   <footer class="footer">
 <strong>Tu companero siempre protegido</strong>
-<span>Prototipo de testeo - Salud para Mascotas</span>
+<span>Encuesta de preferencias - Salud para Mascotas</span>
 </footer>
   <script src="config.js">
 </script>
