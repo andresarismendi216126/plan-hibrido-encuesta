@@ -39,7 +39,7 @@ button,input,select,textarea {
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:var(--white);
+  background:var(--navy);
   border-bottom:1px solid #dce8f3;
   position:relative;
   z-index:2;
@@ -47,14 +47,15 @@ button,input,select,textarea {
 
 .brand {
   text-decoration:none;
-  color:var(--blue);
-  font-size:29px;
-  font-weight:900;
-  letter-spacing:-1px;
+  display:flex;
+  align-items:center;
+  height:40px;
 }
 
-.brand span {
-  color:var(--navy);
+.brand img {
+  display:block;
+  width:92px;
+  max-height:34px;
 }
 
 .eyebrow {
@@ -138,6 +139,7 @@ button,input,select,textarea {
   background:linear-gradient(145deg,var(--blue),#58cce2);
   border-radius:18px 86px 18px 86px;
   box-shadow:var(--shadow);
+  z-index:0;
 }
 
 .pet-photo {
@@ -147,6 +149,7 @@ button,input,select,textarea {
   border:10px solid var(--white);
   border-radius:18px 74px 18px 74px;
   box-shadow:0 20px 40px rgba(0,51,160,.18);
+  z-index:1;
 }
 .pet-photo img { width:100%; height:100%; object-fit:cover; }
 
@@ -159,6 +162,7 @@ button,input,select,textarea {
   background:white;
   border-radius:4px;
   box-shadow:var(--shadow);
+  z-index:2;
 }
 
 .card-kicker { color:var(--blue) !important; font-size:10px !important; font-weight:900; letter-spacing:1.3px; }
