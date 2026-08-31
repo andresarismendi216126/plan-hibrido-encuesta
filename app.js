@@ -6,17 +6,6 @@ const invoiceLabel = document.querySelector('#invoiceLabel');
 const clientPay = document.querySelector('#clientPay');
 const explanation = document.querySelector('#explain');
 const flow = document.querySelector('#flow');
-const annualPrices = [459600, 1087200, 1888800];
-
-function renderPlanPrices() {
-  document.querySelectorAll('.plan > strong').forEach((priceElement, index) => {
-    const monthlyPrice = Math.round((annualPrices[index] * 1.1) / 12);
-    const monthly = document.createElement('div');
-    monthly.className = 'monthly-price';
-    monthly.innerHTML = `Pago mensual equivalente: <b>${money(monthlyPrice)}/mes</b><em>10% más que el pago anual</em>`;
-    priceElement.insertAdjacentElement('afterend', monthly);
-  });
-}
 
 function correctVisibleText() {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -100,6 +89,7 @@ function buildSupabasePayload(form) {
     ciudad: formData.ciudad || null,
     edad_mascota: formData.edad_mascota !== '' ? Number(formData.edad_mascota) : null,
     edad_persona: formData.edad_persona !== '' ? Number(formData.edad_persona) : null,
+    genero: formData.genero || null,
     estrato_social: formData.estrato_social || null,
     modelo: formData.modelo || null,
     claridad: formData.claridad || null,
@@ -140,7 +130,6 @@ document.querySelector('#testForm').addEventListener('submit', async (event) => 
 invoiceInput.addEventListener('input', updateSimulation);
 modelSelect.addEventListener('change', updateSimulation);
 correctVisibleText();
-renderPlanPrices();
 activateModelSwitch();
 activateModelChoices();
 updateSimulation();

@@ -24,7 +24,7 @@
 <div class="pet-visual" aria-label="Perro en un espacio natural">
 <div class="visual-blob">
 </div>
-<div class="pet-photo"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=85" alt="Perro en un espacio natural"></div>
+<div class="pet-photo"><img src="zamonelli-ai-generated-8678181_1920.jpg" alt="Perro y gato juntos"></div>
 <div class="pay-card">
 <span class="card-kicker">BIENESTAR</span><strong>Más libertad para elegir</strong>
 <span>Compara como usarias cada modelo.</span>
@@ -197,7 +197,7 @@
 <input id="ciudad" name="ciudad" placeholder="Ciudad del participante">
 </div>
 <div class="field">
-<label for="edadMascota">Que edad tiene tu mascota?</label>
+<label for="edadMascota">¿Cuántos años tiene tu mascota?</label>
 <input id="edadMascota" name="edad_mascota" type="number" min="0" required>
 </div>
 <div class="field">
@@ -205,7 +205,16 @@
 <input id="edadPersona" name="edad_persona" type="number" min="18" required>
 </div>
 <div class="field">
-<label for="estrato">En que estrato social vive tu hogar?</label>
+<label for="genero">¿Cuál es tu género?</label>
+<select id="genero" name="genero" required>
+<option value="">Selecciona</option>
+<option>Masculino</option>
+<option>Femenino</option>
+<option>Otro</option>
+</select>
+</div>
+<div class="field">
+<label for="estrato">¿Cuál es tu estrato social?</label>
 <select id="estrato" name="estrato_social" required>
 <option value="">Selecciona</option>
 <option>1</option>
@@ -235,7 +244,7 @@
 </select>
 </div>
 <div class="field">
-<label for="adelanto">Aceptarias pagar primero fuera de red?</label>
+<label for="adelanto">¿Preferirías pagar directamente en la clínica y luego solicitar el reembolso a SURA?</label>
 <select id="adelanto" name="adelanto">
 <option>Si</option>
 <option>Depende del monto</option>

@@ -4,6 +4,7 @@ create table if not exists public.respuestas_modelo_hibrido (
   ciudad text,
   edad_mascota integer,
   edad_persona integer,
+  genero text,
   estrato_social text,
   modelo text not null,
   claridad text,
@@ -19,6 +20,9 @@ create table if not exists public.respuestas_modelo_hibrido (
   fecha timestamptz not null default now(),
   version_prototipo text not null default '1.0'
 );
+
+alter table public.respuestas_modelo_hibrido
+  add column if not exists genero text;
 
 alter table public.respuestas_modelo_hibrido enable row level security;
 
