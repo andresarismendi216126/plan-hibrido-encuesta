@@ -67,9 +67,54 @@ async function saveResponse(payload) {
   localStorage.setItem(`hibrido_respuesta_${Date.now()}`, JSON.stringify(payload));
   const config = window.SURVEY_CONFIG || {};
   if (!config.endpoint || !config.anonKey) return 'La respuesta quedo guardada localmente en este navegador.';
-  const response = await fetch(config.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: config.anonKey, Authorization: `Bearer ${config.anonKey}`, Prefer: 'return=minimal' }, body: JSON.stringify(payload) });
-  if (!response.ok) throw new Error('No fue posible registrar la respuesta');
+
+  const response = await fetch(config.endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: config.anonKey,
+      Authorization: `Bearer ${config.anonKey}`,
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`No fue posible registrar la respuesta: ${errorText}`);
+  }
+
   return 'La respuesta fue enviada al repositorio configurado.';
+}
+
+function buildSupabasePayload(form) {
+  const formData = Object.fromEntries(new FormData(form));
+  const simulation = {
+    factura_simulada: Number(invoiceInput.value),
+    modelo_simulado: modelSelect.value,
+    copago_simulado: Math.max(Number(invoiceInput.value) * (modelSelect.value === 'hybrid' ? 0.4 : 0.2), 40000),
+  };
+
+  return {
+    codigo_participante: (formData.nombre_completo || formData.nombreCompleto || 'anonimo').toString().trim() || 'anonimo',
+    ciudad: formData.ciudad || null,
+    edad_mascota: formData.edad_mascota !== '' ? Number(formData.edad_mascota) : null,
+    edad_persona: formData.edad_persona !== '' ? Number(formData.edad_persona) : null,
+    estrato_social: formData.estrato_social || null,
+    modelo: formData.modelo || null,
+    claridad: formData.claridad || null,
+    adelanto: formData.adelanto || null,
+    copago: formData.copago || null,
+    opinion_copago_hibrido: formData.opinion_copago_hibrido || null,
+    claridad_copago_reembolso: formData.claridad_copago_reembolso || null,
+    comentario: formData.comentario || null,
+    mejora: formData.mejora || null,
+    factura_simulada: simulation.factura_simulada,
+    modelo_simulado: simulation.modelo_simulado,
+    copago_simulado: simulation.copago_simulado,
+    fecha: new Date().toISOString(),
+    version_prototipo: '1.0',
+  };
 }
 
 document.querySelector('#testForm').addEventListener('submit', async (event) => {
@@ -79,13 +124,9 @@ document.querySelector('#testForm').addEventListener('submit', async (event) => 
   const submit = form.querySelector('.submit');
   submit.disabled = true;
   submit.textContent = 'Enviando...';
-  const payload = Object.fromEntries(new FormData(form));
-  payload.fecha = new Date().toISOString();
-  payload.version_prototipo = '1.0';
-  payload.factura_simulada = Number(invoiceInput.value);
-  payload.modelo_simulado = modelSelect.value;
-  payload.copago_simulado = Math.max(Number(invoiceInput.value) * (modelSelect.value === 'hybrid' ? 0.4 : 0.2), 40000);
+
   try {
+    const payload = buildSupabasePayload(form);
     document.querySelector('#saveMessage').textContent = await saveResponse(payload);
   } catch (error) {
     document.querySelector('#saveMessage').textContent = 'La respuesta quedo guardada localmente, pero no pudo enviarse al repositorio.';
