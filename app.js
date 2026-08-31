@@ -7,6 +7,10 @@ const clientPay = document.querySelector('#clientPay');
 const explanation = document.querySelector('#explain');
 const flow = document.querySelector('#flow');
 
+function removeMonthlyPlanText() {
+  document.querySelectorAll('.monthly-price').forEach((element) => element.remove());
+}
+
 function correctVisibleText() {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const textNodes = [];
@@ -129,6 +133,7 @@ document.querySelector('#testForm').addEventListener('submit', async (event) => 
 
 invoiceInput.addEventListener('input', updateSimulation);
 modelSelect.addEventListener('change', updateSimulation);
+removeMonthlyPlanText();
 correctVisibleText();
 activateModelSwitch();
 activateModelChoices();

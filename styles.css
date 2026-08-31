@@ -430,22 +430,7 @@ button,input,select,textarea {
 }
 
 .monthly-price {
-  margin:7px 0 12px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.monthly-price b {
-  display:block;
-  color:var(--navy);
-  font-size:14px;
-}
-
-.monthly-price em {
-  color:#397227;
-  font-size:11px;
-  font-style:normal;
-  font-weight:800;
+  display:none !important;
 }
 
 .scenario {
